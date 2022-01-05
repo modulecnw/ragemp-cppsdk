@@ -15,13 +15,16 @@ EXTERN const char* GetPluginName()
 }
 
 class ExampleEventHandler : public rage::IEventHandler,
-	public rage::ITickHandler
-{
+	public rage::IEntityHandler {
 public:
-	virtual rage::ITickHandler* GetTickHandler() override { return this; }
+	virtual rage::IEntityHandler* GetEntityHandler() override { return this; }
 
-	virtual void Tick() override {
-		rage::Log::Debug("ITickHandler", ">>", "Tick");
+	virtual void on_entity_created(__int64* entity_ptr) override { 
+		rage::Log::Debug("IEntityHandler", ">>", "Created");
+	}
+
+	virtual void on_entity_destroyed(__int64* entity_ptr) override {
+		rage::Log::Debug("IEntityHandler", ">>", "Destroyed");
 	}
 };
 

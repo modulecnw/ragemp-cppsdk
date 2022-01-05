@@ -11,6 +11,10 @@
 #include <locale>
 #include <codecvt>
 
+#include "handlers/IEntityHandler.hpp"
+#include "handlers/IPlayerHandler.hpp"
+#include "handlers/ITickHandler.hpp"
+
 #ifdef _WIN32
 #define EXTERN extern "C" __declspec(dllexport) 
 #else
@@ -25,12 +29,6 @@ namespace rage
 
 	};
 
-	class ITickHandler
-	{
-	public:
-		virtual void Tick() { std::cout << "test"; }
-	};
-
 	class IRPCHandler
 	{
 	public:
@@ -42,7 +40,7 @@ namespace rage
 	class IEventHandler
 	{
 	public:
-		virtual ICustomHandler* GetEntityHandler() { return nullptr; } // 0x0
+		virtual IEntityHandler* GetEntityHandler() { return nullptr; } // 0x0
 		virtual ICustomHandler* GetPlayerHandler() { return nullptr; } // 0x8
 		virtual ICustomHandler* GetVehicleHandler() { return nullptr; } // 0x10
 		virtual ICustomHandler* GetColshapeHandler() { return nullptr; } // 0x18
