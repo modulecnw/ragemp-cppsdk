@@ -11,6 +11,8 @@
 #include <locale>
 #include <codecvt>
 
+#include "types.hpp"
+
 #include "handlers/IEntityHandler.hpp"
 #include "handlers/IPlayerHandler.hpp"
 #include "handlers/ITickHandler.hpp"
@@ -29,19 +31,13 @@ namespace rage
 
 	};
 
-	class IRPCHandler
-	{
-	public:
-
-	};
-
 	//rage::IEntityHandler, rage::IPlayerHandler, rage::IVehicleHandler, rage::IColshapeHandler, rage::ICheckpointHandler, rage::IBlipHandler,
 	// rage::ITickHandler, rage::IServerHandler, rage::ILocalEventHandler, rage::IConnectionHandler, rage::IRpcHandler;
 	class IEventHandler
 	{
 	public:
 		virtual IEntityHandler* GetEntityHandler() { return nullptr; } // 0x0
-		virtual ICustomHandler* GetPlayerHandler() { return nullptr; } // 0x8
+		virtual IPlayerHandler* GetPlayerHandler() { return nullptr; } // 0x8
 		virtual ICustomHandler* GetVehicleHandler() { return nullptr; } // 0x10
 		virtual ICustomHandler* GetColshapeHandler() { return nullptr; } // 0x18
 		virtual ICustomHandler* GetCheckpointHandler() { return nullptr; } // 0x20
@@ -52,7 +48,8 @@ namespace rage
 		virtual ICustomHandler* GetConnectionHandler() { return nullptr; } // 0x48
 		virtual ICustomHandler* GetDebugHandler() { return nullptr; } // 0x50 
 		virtual ICustomHandler* GetServerHandler() { return nullptr; } // 0x58
-		virtual IRPCHandler* GetRPCHandler() { return new IRPCHandler; } // 0x60 <- must not be nullptr
+
+		virtual __int64 GetRPCHandler() { return 1; } // 0x60
 	};
 
 	class IMultiplayer
