@@ -11,8 +11,8 @@ public:
 		static DWORD64 current_tick_timeout = 0x0;
 		static DWORD64 latest_tick_timeout = 0x0;
 
-		if ((current_tick_timeout - latest_tick_timeout) > 10000) {
-			rage::Log::Debug("ITickHandler", ">>", "Tick (10000)");
+		if ((current_tick_timeout - latest_tick_timeout) > 60000) {
+			rage::Log::Debug("ITickHandler", ">>", "Tick (60000)");
 
 			latest_tick_timeout = current_tick_timeout;
 		}

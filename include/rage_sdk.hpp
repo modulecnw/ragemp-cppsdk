@@ -17,6 +17,7 @@
 #include "handlers/IPlayerHandler.hpp"
 #include "handlers/IVehicleHandler.hpp"
 #include "handlers/IColshapeHandler.hpp"
+#include "handlers/ICheckpointHandler.hpp"
 #include "handlers/ITickHandler.hpp"
 
 #ifdef _WIN32
@@ -42,7 +43,7 @@ namespace rage
 		virtual IPlayerHandler* GetPlayerHandler() { return nullptr; } // 0x8
 		virtual IVehicleHandler* GetVehicleHandler() { return nullptr; } // 0x10
 		virtual IColshapeHandler* GetColshapeHandler() { return nullptr; } // 0x18
-		virtual ICustomHandler* GetCheckpointHandler() { return nullptr; } // 0x20
+		virtual ICheckpointHandler* GetCheckpointHandler() { return nullptr; } // 0x20
 		virtual ICustomHandler* GetBlipHandler() { return nullptr; } // 0x28
 		virtual ICustomHandler* padding_01() { return nullptr; } // 0x30
 		virtual ITickHandler* GetTickHandler() { return nullptr; } // 0x38

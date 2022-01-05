@@ -8,6 +8,7 @@
 #include "examples/ExamplePlayerEventHandler.hpp"
 #include "examples/ExampleVehicleEventHandler.hpp"
 #include "examples/ExampleColshapeEventHandler.hpp"
+#include "examples/ExampleCheckpointEventHandler.hpp"
 #include "examples/ExampleTickEventHandler.hpp"
 
 EXTERN uint32_t GetPluginVersion()
@@ -31,5 +32,6 @@ EXTERN void InitializePlugin(rage::IMultiplayer* _mp)
 	rage::IMultiplayer::Instance().SetEventHandler(new ExamplePlayerEventHandler);
 	rage::IMultiplayer::Instance().SetEventHandler(new ExampleVehicleEventHandler);
 	rage::IMultiplayer::Instance().SetEventHandler(new ExampleColshapeEventHandler);
-	//rage::IMultiplayer::Instance().SetEventHandler(new ExampleTickEventHandler);
+	rage::IMultiplayer::Instance().SetEventHandler(new ExampleCheckpointEventHandler);
+	rage::IMultiplayer::Instance().SetEventHandler(new ExampleTickEventHandler);
 }
