@@ -15,6 +15,7 @@
 
 #include "handlers/IEntityHandler.hpp"
 #include "handlers/IPlayerHandler.hpp"
+#include "handlers/IVehicleHandler.hpp"
 #include "handlers/ITickHandler.hpp"
 
 #ifdef _WIN32
@@ -38,7 +39,7 @@ namespace rage
 	public:
 		virtual IEntityHandler* GetEntityHandler() { return nullptr; } // 0x0
 		virtual IPlayerHandler* GetPlayerHandler() { return nullptr; } // 0x8
-		virtual ICustomHandler* GetVehicleHandler() { return nullptr; } // 0x10
+		virtual IVehicleHandler* GetVehicleHandler() { return nullptr; } // 0x10
 		virtual ICustomHandler* GetColshapeHandler() { return nullptr; } // 0x18
 		virtual ICustomHandler* GetCheckpointHandler() { return nullptr; } // 0x20
 		virtual ICustomHandler* GetBlipHandler() { return nullptr; } // 0x28

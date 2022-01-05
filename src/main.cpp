@@ -6,6 +6,7 @@
 
 #include "examples/ExampleEntityEventHandler.hpp"
 #include "examples/ExamplePlayerEventHandler.hpp"
+#include "examples/ExampleVehicleEventHandler.hpp"
 #include "examples/ExampleTickEventHandler.hpp"
 
 EXTERN uint32_t GetPluginVersion()
@@ -27,5 +28,6 @@ EXTERN void InitializePlugin(rage::IMultiplayer* _mp)
 
 	rage::IMultiplayer::Instance().SetEventHandler(new ExampleEntityEventHandler);
 	rage::IMultiplayer::Instance().SetEventHandler(new ExamplePlayerEventHandler);
-	rage::IMultiplayer::Instance().SetEventHandler(new ExampleTickEventHandler);
+	rage::IMultiplayer::Instance().SetEventHandler(new ExampleVehicleEventHandler);
+	//rage::IMultiplayer::Instance().SetEventHandler(new ExampleTickEventHandler);
 }
