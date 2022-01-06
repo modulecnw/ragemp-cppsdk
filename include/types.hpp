@@ -1,4 +1,5 @@
 #pragma once
+#include <sstream>
 
 namespace rage {
 	enum class game_type_t : uint8_t {
@@ -11,18 +12,18 @@ namespace rage {
 		float x, y, z;
 	};
 
-	enum class entity_t : uint8_t
+	enum class entity_type_t : uint8_t
 	{
-		Player,
-		Vehicle,
-		Object,
-		Pickup,
-		Blip,
-		Checkpoint,
-		Marker,
-		Colshape,
-		TextLabel,
-		DummyEntity
+		PLAYER,
+		VEHICLE,
+		OBJECT,
+		PICKUP,
+		BLIP,
+		CHECKPOINT,
+		MARKER,
+		COLSHAPE,
+		TEXTLABEL,
+		DUMMYENTITY
 	};
 
 #pragma pack(push, 1)
@@ -47,7 +48,7 @@ namespace rage {
 		arg_t(int i) : type(val_t::Int), v{ i } { }
 		arg_t(float f) : type(val_t::Float), v{ f } { }
 		arg_t(const std::string& str) : type(val_t::String), v{ new char[str.length() + 1] } { memcpy(v.str, str.c_str(), str.length()); v.str[str.length()] = 0; }
-		arg_t(entity_t entityType, uint16_t id, __int64* entity) : type(val_t::Entity), v{ entityType, id, entity } { }
+		arg_t(entity_type_t entityType, uint16_t id, __int64* entity) : type(val_t::Entity), v{ entityType, id, entity } { }
 		arg_t(const arg_t& r) : type(val_t::Null) { *this = r; }
 
 		void SetNull() { DeleteString(); type = val_t::Null; }
@@ -56,7 +57,7 @@ namespace rage {
 		void SetFloat(float f) { DeleteString(); type = val_t::Float; v.f = f; }
 		void SetString(const std::string& str) { DeleteString(); type = val_t::String; v.str = new char[str.length() + 1]; memcpy(v.str, str.c_str(), str.length()); v.str[str.length()] = 0; }
 		void SetJson(const std::string& str) { DeleteString(); type = val_t::Object; v.str = new char[str.length() + 1]; memcpy(v.str, str.c_str(), str.length()); v.str[str.length()] = 0; }
-		void SetEntity(entity_t entityType, uint16_t id, __int64* entity) { DeleteString(); type = val_t::Entity; v.entity = { entityType, id, entity }; }
+		void SetEntity(entity_type_t entityType, uint16_t id, __int64* entity) { DeleteString(); type = val_t::Entity; v.entity = { entityType, id, entity }; }
 		void SetVector3(const vec3_t& vec) { DeleteString(); type = val_t::Vector3; v.vector = vec; }
 
 		val_t GetType() const { return type; }
@@ -76,7 +77,7 @@ namespace rage {
 
 		__int64* Entity() const { return (type == val_t::Entity) ? v.entity.ptr : nullptr; }
 		uint16_t EntityId() const { return (type == val_t::Entity) ? v.entity.id : 0xFFFF; }
-		entity_t EntityType() const { return (type == val_t::Entity) ? v.entity.type : static_cast<entity_t>(-1); }
+		entity_type_t EntityType() const { return (type == val_t::Entity) ? v.entity.type : static_cast<entity_type_t>(-1); }
 
 		arg_t& operator=(const arg_t& r) { DeleteString(); if (r.GetType() != val_t::String) { this->v.entity = r.v.entity; type = r.GetType(); } else { this->SetString(r.String()); } return *this; }
 		arg_t& operator=(arg_t&& r) { DeleteString(); this->v.str = r.v.str; type = r.GetType(); r.type = val_t::Null; r.v.str = nullptr; return *this; }
@@ -98,7 +99,7 @@ namespace rage {
 
 			struct _EntityData
 			{
-				entity_t type;
+				entity_type_t type;
 				uint16_t id;
 
 				__int64* ptr;
@@ -110,7 +111,7 @@ namespace rage {
 			_Value(float _f) : f{ _f } { }
 			_Value(char* _str) : str{ _str } { }
 			_Value(const vec3_t& _vec) : vector{ _vec } { }
-			_Value(entity_t entityType, uint16_t id, __int64* ptr) : entity{ entityType, id, ptr } { }
+			_Value(entity_type_t entityType, uint16_t id, __int64* ptr) : entity{ entityType, id, ptr } { }
 		} v;
 
 		val_t type;

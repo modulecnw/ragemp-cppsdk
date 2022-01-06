@@ -13,6 +13,18 @@
 
 #include "types.hpp"
 
+#include "objects/IEntity.hpp"
+#include "objects/IPlayer.hpp"
+#include "objects/IVehicle.hpp"
+#include "objects/IObject.hpp"
+#include "objects/IPickup.hpp"
+#include "objects/IBlip.hpp"
+#include "objects/ICheckpoint.hpp"
+#include "objects/IMarker.hpp"
+#include "objects/IColshape.hpp"
+#include "objects/ITextLabel.hpp"
+#include "objects/IDummyEntity.hpp"
+
 #include "handlers/IEntityHandler.hpp"
 #include "handlers/IPlayerHandler.hpp"
 #include "handlers/IVehicleHandler.hpp"

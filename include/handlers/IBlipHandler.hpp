@@ -15,7 +15,7 @@ namespace rage {
 	{
 	public:
 		// NOT WORKING - NOT SYNCED
-		virtual void on_player_create_waypoint(__int64* entity_ptr, const rage::vec3_t& waypoint_position) = 0;
-		virtual void on_player_reach_waypoint(__int64* entity_ptr) = 0;
+		virtual void on_player_create_waypoint(rage::IPlayer* entity_ptr, const rage::vec3_t& waypoint_position) = 0;
+		virtual void on_player_reach_waypoint(rage::IPlayer* entity_ptr) = 0;
 	};
 }

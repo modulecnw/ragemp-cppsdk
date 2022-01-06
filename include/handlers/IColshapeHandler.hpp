@@ -14,7 +14,7 @@ namespace rage {
 	class IColshapeHandler
 	{
 	public:
-		virtual void on_player_enter_colshape(__int64* entity_ptr, __int64* colshape_ptr) = 0;
-		virtual void on_player_exit_colshape(__int64* entity_ptr, __int64* colshape_ptr) = 0;
+		virtual void on_player_enter_colshape(rage::IPlayer* entity_ptr, rage::IColshape* colshape_ptr) = 0;
+		virtual void on_player_exit_colshape(rage::IPlayer* entity_ptr, rage::IColshape* colshape_ptr) = 0;
 	};
 }

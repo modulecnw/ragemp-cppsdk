@@ -24,28 +24,28 @@ namespace rage {
 	class IPlayerHandler
 	{
 	public:
-		virtual void on_player_connect(__int64* entity_ptr) = 0;
-		virtual void on_player_ready(__int64* entity_ptr) = 0;
-		virtual void on_player_disconnect(__int64* entity_ptr, unsigned __int8 disconnect_type, __int64 reason) = 0;
+		virtual void on_player_connect(rage::IPlayer* player) = 0;
+		virtual void on_player_ready(rage::IPlayer* player) = 0;
+		virtual void on_player_disconnect(rage::IPlayer* player, unsigned __int8 disconnect_type, __int64 reason) = 0;
 
-		virtual void on_player_command(__int64* entity_ptr, const std::u16string& command) = 0;
-		virtual void on_player_chat(__int64* entity_ptr, const std::u16string& message) = 0;
+		virtual void on_player_command(rage::IPlayer* player, const std::u16string& command) = 0;
+		virtual void on_player_chat(rage::IPlayer* player, const std::u16string& message) = 0;
 
-		virtual void on_player_death(__int64* entity_ptr, uint32_t death_reason, __int64* killer_ptr) = 0;
-		virtual void on_player_spawn(__int64* entity_ptr) = 0;
+		virtual void on_player_death(rage::IPlayer* player, uint32_t death_reason, rage::IPlayer* killer) = 0;
+		virtual void on_player_spawn(rage::IPlayer* player) = 0;
 
-		virtual void on_player_damage(__int64* entity_ptr, float health_loss, float armor_loss) = 0;
-		virtual void on_player_weapon_switch(__int64* entity_ptr, uint32_t old_weapon, uint32_t new_weapon) = 0;
+		virtual void on_player_damage(rage::IPlayer* player, float health_loss, float armor_loss) = 0;
+		virtual void on_player_weapon_switch(rage::IPlayer* player, uint32_t old_weapon, uint32_t new_weapon) = 0;
 
-		virtual void on_player_remote_event(__int64* entity_ptr, uint64_t event_name_hash, const rage::args_t& args) = 0;
+		virtual void on_player_remote_event(rage::IPlayer* player, uint64_t event_name_hash, const rage::args_t& args) = 0;
 
-		virtual void padding_01(__int64* entity_ptr) { }
-		virtual void padding_02(__int64* entity_ptr) { }
+		virtual void padding_01(rage::IPlayer* player) { }
+		virtual void padding_02(rage::IPlayer* player) { }
 
-		virtual void on_player_start_enter_vehicle(__int64* entity_ptr, __int64* vehicle_ptr, unsigned __int8 seat_id) = 0;
-		virtual void on_player_enter_vehicle(__int64* entity_ptr, __int64* vehicle_ptr, unsigned __int8 seat_id) = 0;
+		virtual void on_player_start_enter_vehicle(rage::IPlayer* player, rage::IVehicle* vehicle_ptr, unsigned __int8 seat_id) = 0;
+		virtual void on_player_enter_vehicle(rage::IPlayer* player, rage::IVehicle* vehicle_ptr, unsigned __int8 seat_id) = 0;
 
-		virtual void on_player_start_exit_vehicle(__int64* entity_ptr) = 0;
-		virtual void on_player_exit_vehicle(__int64* entity_ptr) = 0;
+		virtual void on_player_start_exit_vehicle(rage::IPlayer* player) = 0;
+		virtual void on_player_exit_vehicle(rage::IPlayer* player) = 0;
 	};
 }
