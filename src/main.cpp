@@ -9,7 +9,9 @@
 #include "examples/ExampleVehicleEventHandler.hpp"
 #include "examples/ExampleColshapeEventHandler.hpp"
 #include "examples/ExampleCheckpointEventHandler.hpp"
+#include "examples/ExampleBlipEventHandler.hpp"
 #include "examples/ExampleTickEventHandler.hpp"
+#include "examples/ExampleLocalEventEventHandler.hpp"
 
 EXTERN uint32_t GetPluginVersion()
 {
@@ -33,5 +35,7 @@ EXTERN void InitializePlugin(rage::IMultiplayer* _mp)
 	rage::IMultiplayer::Instance().SetEventHandler(new ExampleVehicleEventHandler);
 	rage::IMultiplayer::Instance().SetEventHandler(new ExampleColshapeEventHandler);
 	rage::IMultiplayer::Instance().SetEventHandler(new ExampleCheckpointEventHandler);
+	rage::IMultiplayer::Instance().SetEventHandler(new ExampleBlipEventHandler);
 	rage::IMultiplayer::Instance().SetEventHandler(new ExampleTickEventHandler);
+	rage::IMultiplayer::Instance().SetEventHandler(new ExampleLocalEventEventHandler);
 }

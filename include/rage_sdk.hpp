@@ -18,7 +18,9 @@
 #include "handlers/IVehicleHandler.hpp"
 #include "handlers/IColshapeHandler.hpp"
 #include "handlers/ICheckpointHandler.hpp"
+#include "handlers/IBlipHandler.hpp"
 #include "handlers/ITickHandler.hpp"
+#include "handlers/ILocalEventHandler.hpp"
 
 #ifdef _WIN32
 #define EXTERN extern "C" __declspec(dllexport) 
@@ -28,12 +30,6 @@
 
 namespace rage
 {
-	class ICustomHandler
-	{
-	public:
-
-	};
-
 	//rage::IEntityHandler, rage::IPlayerHandler, rage::IVehicleHandler, rage::IColshapeHandler, rage::ICheckpointHandler, rage::IBlipHandler,
 	// rage::ITickHandler, rage::IServerHandler, rage::ILocalEventHandler, rage::IConnectionHandler, rage::IRpcHandler;
 	class IEventHandler
@@ -44,13 +40,13 @@ namespace rage
 		virtual IVehicleHandler* GetVehicleHandler() { return nullptr; } // 0x10
 		virtual IColshapeHandler* GetColshapeHandler() { return nullptr; } // 0x18
 		virtual ICheckpointHandler* GetCheckpointHandler() { return nullptr; } // 0x20
-		virtual ICustomHandler* GetBlipHandler() { return nullptr; } // 0x28
-		virtual ICustomHandler* padding_01() { return nullptr; } // 0x30
+		virtual IBlipHandler* GetBlipHandler() { return nullptr; } // 0x28
+		virtual __int64* padding_01() { return nullptr; } // 0x30
 		virtual ITickHandler* GetTickHandler() { return nullptr; } // 0x38
-		virtual ICustomHandler* GetLocalEventHandler() { return nullptr; } // 0x40
-		virtual ICustomHandler* GetConnectionHandler() { return nullptr; } // 0x48
-		virtual ICustomHandler* GetDebugHandler() { return nullptr; } // 0x50 
-		virtual ICustomHandler* GetServerHandler() { return nullptr; } // 0x58
+		virtual ILocalEventHandler* GetLocalEventHandler() { return nullptr; } // 0x40
+		virtual __int64* GetConnectionHandler() { return nullptr; } // 0x48
+		virtual __int64* GetDebugHandler() { return nullptr; } // 0x50 
+		virtual __int64* GetServerHandler() { return nullptr; } // 0x58
 
 		virtual __int64 GetRPCHandler() { return 1; } // 0x60
 	};
