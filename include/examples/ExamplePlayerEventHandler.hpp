@@ -22,6 +22,10 @@ public:
 	virtual void on_player_command(rage::IPlayer* player, const std::u16string& command)  override {
 		std::string string_command(command.begin(), command.end());
 
+		if (string_command.find("kick") != std::string::npos) {
+			player->kick_silent();
+		}
+
 		rage::Log::Debug("IPlayerHandler", ">>", "Command", string_command);
 	}
 

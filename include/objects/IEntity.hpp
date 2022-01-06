@@ -27,5 +27,13 @@ namespace rage {
 
 		virtual uint8_t get_alpha() = 0;
 		virtual void set_alpha(uint8_t alpha) = 0;
+
+	private:
+		virtual void padding_01() = 0;
+		virtual void padding_02() = 0;
+		virtual void padding_03() = 0; // get_shared_data
+		virtual void padding_04() = 0;
+		virtual void padding_05() = 0;
+		virtual void padding_06() = 0; // returns 0 or 1 - might be a "has" function
 	};
 }
