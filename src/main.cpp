@@ -13,6 +13,7 @@
 #include "examples/ExampleTickEventHandler.hpp"
 #include "examples/ExampleLocalEventEventHandler.hpp"
 #include "examples/ExampleConnectionEventHandler.hpp"
+#include "examples/ExampleServerEventHandler.hpp"
 
 EXTERN uint32_t GetPluginVersion()
 {
@@ -24,7 +25,7 @@ EXTERN const char* GetPluginName()
 	return "rage:MP SDK";
 }
 
-EXTERN void InitializePlugin(rage::IMultiplayer* _mp)
+EXTERN bool InitializePlugin(rage::IMultiplayer* _mp)
 {
 	rage::IMultiplayer::SetInstance(_mp);
 	rage::Log::Push(new rage::Log::ConsoleStream);
@@ -40,4 +41,7 @@ EXTERN void InitializePlugin(rage::IMultiplayer* _mp)
 	rage::IMultiplayer::Instance().SetEventHandler(new ExampleTickEventHandler);
 	rage::IMultiplayer::Instance().SetEventHandler(new ExampleLocalEventEventHandler);
 	rage::IMultiplayer::Instance().SetEventHandler(new ExampleConnectionEventHandler);
+	rage::IMultiplayer::Instance().SetEventHandler(new ExampleServerEventHandler);
+
+	return true;
 }
