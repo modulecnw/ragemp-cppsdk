@@ -12,6 +12,7 @@
 #include "examples/ExampleBlipEventHandler.hpp"
 #include "examples/ExampleTickEventHandler.hpp"
 #include "examples/ExampleLocalEventEventHandler.hpp"
+#include "examples/ExampleConnectionEventHandler.hpp"
 
 EXTERN uint32_t GetPluginVersion()
 {
@@ -38,4 +39,5 @@ EXTERN void InitializePlugin(rage::IMultiplayer* _mp)
 	rage::IMultiplayer::Instance().SetEventHandler(new ExampleBlipEventHandler);
 	rage::IMultiplayer::Instance().SetEventHandler(new ExampleTickEventHandler);
 	rage::IMultiplayer::Instance().SetEventHandler(new ExampleLocalEventEventHandler);
+	rage::IMultiplayer::Instance().SetEventHandler(new ExampleConnectionEventHandler);
 }

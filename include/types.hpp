@@ -1,6 +1,12 @@
 #pragma once
 
 namespace rage {
+	enum class game_type_t : uint8_t {
+		rgsc,
+		steam,
+		egs
+	};
+
 	struct vec3_t {
 		float x, y, z;
 	};
