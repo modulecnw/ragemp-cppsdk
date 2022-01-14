@@ -30,6 +30,7 @@ GroupSources(${PROJECT_SOURCE_DIR}/include "Include Files")
 include_directories(
   ${PROJECT_SOURCE_DIR}/src
   ${PROJECT_SOURCE_DIR}/include
+  ../
 )
 
 if (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
